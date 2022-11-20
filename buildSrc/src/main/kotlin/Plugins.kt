@@ -9,6 +9,7 @@ object Plugins {
     const val firebaseAppDistribution = "com.google.firebase:firebase-appdistribution-gradle:${Versions.firebaseAppDistribution}"
     const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-gradle:${Versions.firebaseCrashlytics}"
     const val firebasePerformance="com.google.firebase:perf-plugin:${Versions.firebasePerformance}"
+    const val kotlinxTestResource="com.goncalossilva.resources"
 
     const val androidApplication = "com.android.application"
     const val android = "android"
@@ -26,4 +27,6 @@ object Plugins {
 
     const val jvm = "jvm"
     const val compose = "org.jetbrains.compose"
+
+    const val nativeCocoaPods = "native.cocoapods"
 }

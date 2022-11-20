@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin(Plugins.multiplatform)
+    kotlin(Plugins.nativeCocoaPods)
     id(Plugins.androidLibrary)
     kotlin(Plugins.kotlinXSerialization) version Versions.kotlinSerialization
     id(Plugins.nativeCoroutines)
@@ -28,6 +29,22 @@ kotlin {
     }
     iosTarget("iOS") {}
 
+    cocoapods {
+
+        version = "1"
+
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        /* ios.deploymentTarget = "14.1"
+         podfile = project.file("../Gistagram/Podfile")
+
+         */
+        framework {
+            baseName = "shared"
+            isStatic = false
+        }
+    }
+
     sourceSets {
         sourceSets["commonMain"].dependencies {
             implementation(MultiplatformDependencies.kotlinxCoroutines)
@@ -50,6 +67,9 @@ kotlin {
         sourceSets["commonTest"].dependencies {
             implementation(kotlin("test"))
             implementation(MultiplatformDependencies.ktorMock)
+            implementation(MultiplatformDependencies.kotlinxTestResources)
+            implementation(MultiplatformDependencies.kotlinxCoroutinesTest)
+            implementation(MultiplatformDependencies.multiplatformSettingsTest)
         }
 
         sourceSets["androidMain"].dependencies {
